@@ -5,6 +5,7 @@ import About from "./pages/About";
 import Menu from "./pages/Menu";
 import Contact from "./pages/Contact";
 import Footer from "./components/Footer";
+import Card from "./components/Card";
 
 const App = () => {
   return (
@@ -16,6 +17,12 @@ const App = () => {
         <Route path="menu" element={<Menu />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
+      <Card
+        imgSrc={"https://picsum.photos/id/237/300/200"}
+        price={14}
+        title="Thosai"
+        desc="fluffy and hot thosai"
+      />
       <Footer />
     </>
   );
