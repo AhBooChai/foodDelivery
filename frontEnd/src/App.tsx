@@ -6,6 +6,7 @@ import Menu from "./pages/Menu";
 import Contact from "./pages/Contact";
 import Footer from "./components/Footer";
 import Card from "./components/Card";
+import Hero from "./components/Hero";
 
 const App = () => {
   return (
@@ -17,6 +18,10 @@ const App = () => {
         <Route path="menu" element={<Menu />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
+      <div className="component_container">
+        <Hero />
+      </div>
+
       <Card
         imgSrc={"https://picsum.photos/id/237/300/200"}
         price={14}

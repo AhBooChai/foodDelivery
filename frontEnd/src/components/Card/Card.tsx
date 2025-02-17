@@ -10,10 +10,7 @@ const Card = ({ imgSrc, title, desc, price }: CardProps) => {
   return (
     <div className="card-container">
       <img src={imgSrc} alt={title} className="card-img" />
-      <h3 className="card-title">
-        {title}
-        <small>15 October</small>
-      </h3>
+      <h3 className="card-title">{title}</h3>
       <p className="card-desc">{desc}</p>
       <p>{price}</p>
       <p></p>
