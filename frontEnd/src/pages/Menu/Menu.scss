@@ -50,4 +50,19 @@
       }
     }
   }
+
+  &__search {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+    input {
+      padding: 8px;
+      border: 1.5px solid #37353f;
+      border-radius: 0 0 125px 3px/3px 85px 5px 55px;
+      width: 100%;
+      &:focus {
+        border-width: 0 0 1.5px 0;
+      }
+    }
+  }
 }

@@ -14,9 +14,7 @@ interface Product {
 const Menu = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
-  // const [food, setFood] = useState<Product[]>([]);
-  // const [drinks, setDrinks] = useState<Product[]>([]);
-
+  const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -52,11 +50,31 @@ const Menu = () => {
     setFilteredProducts(products);
   };
 
+  const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const value = event.target.value.toLowerCase();
+    setSearch(value);
+
+    const filtered = products.filter((product) =>
+      product.name.toLowerCase().includes(value)
+    );
+
+    setFilteredProducts(filtered);
+  };
+
   return loading ? (
     <p>Loading..........</p>
   ) : (
     <div className="menu__container">
       <h1 className="menu__title">Menu</h1>
+
+      <div className="menu__search">
+        <input
+          type="text"
+          placeholder="Mutton Varuval..."
+          value={search}
+          onChange={handleSearch}
+        />
+      </div>
 
       <div className="menu__buttons">
         <button onClick={showAll}>Show All</button>
