@@ -1,0 +1,19 @@
+.menu {
+  &__container {
+    margin: 2rem 0;
+    padding: 1rem;
+    min-height: 100vh;
+  }
+  &__title {
+    font: 50px/1 "Lobster", cursive;
+    text-shadow: 2px 1px 0 #fbfae8, 5px 4px 0 coral;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: 1rem;
+    justify-items: center;
+  }
+}
