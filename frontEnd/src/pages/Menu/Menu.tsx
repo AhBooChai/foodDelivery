@@ -1,6 +1,6 @@
 import "./Menu.scss";
 const Menu = () => {
-  return <div>Menu</div>;
+  return <div>menu</div>;
 };
 
 export default Menu;

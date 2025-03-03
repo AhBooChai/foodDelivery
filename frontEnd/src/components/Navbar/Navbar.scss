@@ -6,7 +6,6 @@ $pink: #fc8b93;
 }
 
 .header {
-  background-color: transparent;
   position: fixed;
   width: 100%;
   z-index: 100;
@@ -54,6 +53,9 @@ $pink: #fc8b93;
 
 @media (max-width: 650px) {
   .nav {
+    background-image: linear-gradient(#e4e4e4 1px, transparent 1px),
+      linear-gradient(90deg, #e4e4e4 1px, transparent 1px);
+    background-size: 10px 10px, 10px 10px, 2px 2px, 2px 2px;
     position: fixed;
     top: 0;
     right: -100%;
