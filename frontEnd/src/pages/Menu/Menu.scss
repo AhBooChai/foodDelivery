@@ -16,4 +16,38 @@
     gap: 1rem;
     justify-items: center;
   }
+  &__buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    button {
+      display: inline-block;
+      padding: 10px 20px;
+      width: max-content;
+      min-width: 150px;
+      position: relative;
+      transition: 0.2s ease-in-out;
+      background: #fc8b93;
+      border: 1.5px solid #37353f;
+      border-radius: 0 0 125px 3px/3px 85px 5px 55px;
+      box-shadow: 3px 3px 0 0 #37353f;
+      font-weight: 400;
+      font-size: 1rem;
+      text-transform: uppercase;
+      text-align: center;
+      transition: all 0.3s ease-in-out;
+      span {
+        position: relative;
+        z-index: 2;
+      }
+      &:hover {
+        background: rgba(#fc8b93, 0.6);
+      }
+      &:focus,
+      &:active {
+        transform: translate(3px, 3px);
+      }
+    }
+  }
 }

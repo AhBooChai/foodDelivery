@@ -1,0 +1,98 @@
+.hero {
+  height: 600px;
+  padding: 20px;
+  margin: 40px;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
+  &__image {
+    max-width: 50%;
+    height: auto;
+    object-fit: contain;
+  }
+  &__text {
+    width: 80%;
+    h1 {
+      font-size: 3.3rem;
+      margin-bottom: 12px;
+      color: #37353f;
+    }
+    p {
+      font-size: 1.4rem;
+      margin-bottom: 12px;
+    }
+  }
+}
+
+.btn-box {
+  display: inline-block;
+  padding: 10px 20px;
+  width: max-content;
+  min-width: 150px;
+  position: relative;
+  transition: 0.2s ease-in-out;
+  background: #fc8b93;
+  border: 1.5px solid #37353f;
+  border-radius: 0 0 125px 3px/3px 85px 5px 55px;
+  box-shadow: 3px 3px 0 0 #37353f;
+  font-weight: 400;
+  font-size: 1rem;
+  text-transform: uppercase;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+  span {
+    position: relative;
+    z-index: 2;
+  }
+  &:hover {
+    background: rgba(#fc8b93, 0.6);
+  }
+  &:focus,
+  &:active {
+    transform: translate(3px, 3px);
+  }
+}
+
+@media (max-width: 1024px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    img {
+      max-width: 80%;
+    }
+    .hero__text {
+      width: 100%;
+      text-align: center;
+
+      h1 {
+        font-size: 3rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  img {
+    max-width: 90%; // Adjust width for smaller screens
+  }
+  .btn-box {
+    width: 60%; // Make it wider for better usability
+    min-width: unset;
+  }
+}
+
+@media (max-width: 480px) {
+  img {
+    max-width: 100%; // Full width on mobile
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  .btn-box {
+    width: 80%; // Wider for smaller screens
+  }
+}

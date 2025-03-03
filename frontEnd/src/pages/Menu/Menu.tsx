@@ -13,8 +13,9 @@ interface Product {
 
 const Menu = () => {
   const [products, setProducts] = useState<Product[]>([]);
-  const [food, setFood] = useState<Product[]>([]);
-  const [drinks, setDrinks] = useState<Product[]>([]);
+  const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
+  // const [food, setFood] = useState<Product[]>([]);
+  // const [drinks, setDrinks] = useState<Product[]>([]);
 
   const [loading, setLoading] = useState(true);
 
@@ -26,12 +27,7 @@ const Menu = () => {
         );
         console.log(response.data);
         setProducts(response.data);
-        setFood(
-          response.data.filter((item: Product) => item.category === "food")
-        );
-        setDrinks(
-          response.data.filter((item: Product) => item.category === "beverages")
-        );
+        setFilteredProducts(response.data);
         setLoading(false);
       } catch (error) {
         console.log(error);
@@ -42,13 +38,33 @@ const Menu = () => {
     fetchData();
   }, []);
 
+  const showFood = () => {
+    setFilteredProducts(products.filter((item) => item.category === "food"));
+  };
+
+  const showDrinks = () => {
+    setFilteredProducts(
+      products.filter((item) => item.category === "beverages")
+    );
+  };
+
+  const showAll = () => {
+    setFilteredProducts(products);
+  };
+
   return loading ? (
     <p>Loading..........</p>
   ) : (
     <div className="menu__container">
       <h1 className="menu__title">Menu</h1>
+
+      <div className="menu__buttons">
+        <button onClick={showAll}>Show All</button>
+        <button onClick={showFood}>Food</button>
+        <button onClick={showDrinks}>Drinks</button>
+      </div>
       <div className="menu__grid">
-        {products.map((product) => (
+        {filteredProducts.map((product) => (
           <Card
             key={product.id}
             imgSrc={product.img}
