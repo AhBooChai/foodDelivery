@@ -1,6 +1,6 @@
 .menu {
   &__container {
-    margin: 2rem 0;
+    margin: 4rem 0;
     padding: 1rem;
     min-height: 100vh;
   }
@@ -56,7 +56,8 @@
     justify-content: center;
     margin-bottom: 15px;
     input {
-      padding: 8px;
+      width: 60%;
+      padding: 10px;
       border: 1.5px solid #37353f;
       border-radius: 0 0 125px 3px/3px 85px 5px 55px;
       width: 100%;
