@@ -3,21 +3,21 @@ import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import About from "./pages/About";
 import Menu from "./pages/Menu";
-import Contact from "./pages/Contact";
 import Home from "./pages/Home";
+import { ShoppingCartProvider } from "./context/ShoppingCartContext";
 
 const App = () => {
   return (
-    <div>
+    <ShoppingCartProvider>
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/menu" element={<Menu />} />
-        <Route path="/contact" element={<Contact />} />
+        {/* <Route path="/contact" element={<Contact />} /> */}
       </Routes>
       <Footer />
-    </div>
+    </ShoppingCartProvider>
   );
 };
 
