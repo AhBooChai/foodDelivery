@@ -85,6 +85,7 @@ const Menu = () => {
         {filteredProducts.map((product) => (
           <Card
             key={product.id}
+            id={product.id}
             imgSrc={product.img}
             title={product.name}
             price={product.price}

@@ -1,13 +1,23 @@
 footer {
   background-color: black;
   color: rgba(255, 255, 255, 0.85);
-  height: 50px;
+  height: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 12px;
-  padding: 25px 0;
+  padding: 30px 0;
   position: fixed;
   bottom: 0;
   width: 100%;
+}
+
+@media (max-width: 650px) {
+  footer {
+    align-items: flex-start;
+    padding: 20px 0;
+    margin-top: 2rem;
+    bottom: 2rem;
+    height: 70px;
+  }
 }

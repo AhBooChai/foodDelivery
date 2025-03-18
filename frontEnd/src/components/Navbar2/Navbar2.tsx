@@ -1,22 +1,15 @@
-import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import "./Navbar.scss";
 
-const Navbar = () => {
-  const [showMenu, setShowMenu] = useState(false);
+import "./Navbar2.scss";
+
+const Navbar2 = () => {
   return (
     <header className="header">
       <div className="header__content">
-        <nav className={`nav ${showMenu ? "open" : ""}`}>
+        <nav className="nav">
           <ul className="nav__list">
             <li className="nav__link">
-              <NavLink
-                to="/"
-                onClick={() => {
-                  setShowMenu(false);
-                }}
-                className="nav__item"
-              >
+              <NavLink to="/" className="nav__item">
                 <img
                   src="../../../public/bxs-home.svg"
                   alt="home"
@@ -26,13 +19,7 @@ const Navbar = () => {
               </NavLink>
             </li>
             <li className="nav__link">
-              <NavLink
-                to="/about"
-                onClick={() => {
-                  setShowMenu(false);
-                }}
-                className="nav__item"
-              >
+              <NavLink to="/about" className="nav__item">
                 <img
                   src="../../../public/bxs-info-circle.svg"
                   alt="about"
@@ -42,13 +29,7 @@ const Navbar = () => {
               </NavLink>
             </li>
             <li className="nav__link">
-              <NavLink
-                to="/menu"
-                onClick={() => {
-                  setShowMenu(false);
-                }}
-                className="nav__item"
-              >
+              <NavLink to="/menu" className="nav__item">
                 <img
                   src="../../../public/bxs-bowl-hot.svg"
                   alt="menu"
@@ -58,13 +39,7 @@ const Navbar = () => {
               </NavLink>
             </li>
             <li className="nav__link">
-              <NavLink
-                to="/contact"
-                onClick={() => {
-                  setShowMenu(false);
-                }}
-                className="nav__item"
-              >
+              <NavLink to="/contact" className="nav__item">
                 <img
                   src="../../../public/bxs-phone.svg"
                   alt="contact"
@@ -74,13 +49,7 @@ const Navbar = () => {
               </NavLink>
             </li>
             <li className="nav__link">
-              <NavLink
-                to="/contact"
-                onClick={() => {
-                  setShowMenu(false);
-                }}
-                className="nav__item"
-              >
+              <NavLink to="/contact" className="nav__item">
                 <img
                   src="../../../public/bxs-cart.svg"
                   alt="cart"
@@ -91,16 +60,6 @@ const Navbar = () => {
             </li>
           </ul>
         </nav>
-        <div
-          className={`menu ${showMenu ? "open" : ""}`}
-          onClick={() => {
-            setShowMenu(!showMenu);
-          }}
-        >
-          <span className="bar"></span>
-          <span className="bar"></span>
-          <span className="bar"></span>
-        </div>
         <Link to="/" className="logo">
           Logo
         </Link>
@@ -109,4 +68,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default Navbar2;
