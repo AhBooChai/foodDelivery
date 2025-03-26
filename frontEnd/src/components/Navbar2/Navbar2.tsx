@@ -1,8 +1,16 @@
-import { Link, NavLink } from "react-router-dom";
-
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import "./Navbar2.scss";
+import { useShoppingCart } from "../../context/ShoppingCartContext";
 
 const Navbar2 = () => {
+  const { openCart } = useShoppingCart();
+  const navigate = useNavigate();
+
+  const handleCartClick = (event: React.MouseEvent) => {
+    event.preventDefault();
+    openCart();
+    navigate("/cart");
+  };
   return (
     <header className="header">
       <div className="header__content">
@@ -49,19 +57,26 @@ const Navbar2 = () => {
               </NavLink>
             </li>
             <li className="nav__link">
-              <NavLink to="/contact" className="nav__item">
-                <img
-                  src="../../../public/bxs-cart.svg"
-                  alt="cart"
-                  className="nav__icon"
-                />
-                <span className="nav__name">Cart</span>
+              <NavLink
+                to="/cart"
+                className="nav__item"
+                onClick={handleCartClick}
+              >
+                <div className="cart__icon-container">
+                  <img
+                    src="../../../public/bxs-cart.svg"
+                    alt="cart"
+                    className="nav__icon"
+                  />
+                  <span className="cart__badge">3</span>
+                </div>
+                <span className="nav__name">cart</span>
               </NavLink>
             </li>
           </ul>
         </nav>
         <Link to="/" className="logo">
-          Logo
+          s Logo
         </Link>
       </div>
     </header>

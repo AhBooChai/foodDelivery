@@ -9,9 +9,8 @@ interface CardProps {
   id: number;
 }
 const Card = ({ imgSrc, title, price, id }: CardProps) => {
-  const { getItemQuantity, increaseCartQuantity } = useShoppingCart();
+  const { increaseCartQuantity } = useShoppingCart();
 
-  const quantity = id ? getItemQuantity(id) : 0;
   return (
     <div className="card" key={id}>
       <img src={imgSrc} alt={title} className="card__img" />
@@ -20,7 +19,7 @@ const Card = ({ imgSrc, title, price, id }: CardProps) => {
       <p></p>
       <button
         className="btn-circle btn-x card-btn"
-        onClick={() => id && increaseCartQuantity(id)}
+        onClick={() => increaseCartQuantity(id)}
       >
         <span className="visually-hidden"></span>
       </button>
