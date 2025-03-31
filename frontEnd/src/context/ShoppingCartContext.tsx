@@ -7,6 +7,9 @@ interface ShoppingCartProviderProps {
 
 interface CartItem {
   id: number;
+  name: string;
+  image: string;
+  price: number;
   quantity: number;
 }
 
@@ -24,6 +27,7 @@ interface ShoppingCartContext {
 
 const ShoppingCartContext = createContext({} as ShoppingCartContext);
 
+// eslint-disable-next-line react-refresh/only-export-components
 export function useShoppingCart() {
   return useContext(ShoppingCartContext);
 }
@@ -37,9 +41,15 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
     0
   );
 
-  const openCart = () => setIsOpen(true);
+  const openCart = () => {
+    console.log("Cart Opened");
+    setIsOpen(true);
+  };
 
-  const closeCart = () => setIsOpen(false);
+  const closeCart = () => {
+    console.log("Cart closed");
+    setIsOpen(false);
+  };
 
   const getItemQuantity = (id: number) => {
     return cartItems.find((item) => item.id === id)?.quantity || 0;
@@ -48,7 +58,10 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
   const increaseCartQuantity = (id: number) => {
     setCartItems((currItems) => {
       if (currItems.find((item) => item.id === id) == null) {
-        return [...currItems, { id, quantity: 1 }];
+        return [
+          ...currItems,
+          { id, quantity: 1, name: "", image: "", price: 0 },
+        ];
       } else {
         return currItems.map((item) => {
           if (item.id === id) {

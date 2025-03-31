@@ -3,7 +3,7 @@ import "./Navbar2.scss";
 import { useShoppingCart } from "../../context/ShoppingCartContext";
 
 const Navbar2 = () => {
-  const { openCart } = useShoppingCart();
+  const { openCart, cartQuantity } = useShoppingCart();
   const navigate = useNavigate();
 
   const handleCartClick = (event: React.MouseEvent) => {
@@ -68,7 +68,9 @@ const Navbar2 = () => {
                     alt="cart"
                     className="nav__icon"
                   />
-                  <span className="cart__badge">3</span>
+                  {cartQuantity > 0 && (
+                    <span className="cart__badge">{cartQuantity}</span>
+                  )}
                 </div>
                 <span className="nav__name">cart</span>
               </NavLink>
@@ -76,7 +78,7 @@ const Navbar2 = () => {
           </ul>
         </nav>
         <Link to="/" className="logo">
-          s Logo
+          Logo
         </Link>
       </div>
     </header>
