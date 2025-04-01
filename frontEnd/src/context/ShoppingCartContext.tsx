@@ -42,12 +42,10 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
   );
 
   const openCart = () => {
-    console.log("Cart Opened");
     setIsOpen(true);
   };
 
   const closeCart = () => {
-    console.log("Cart closed");
     setIsOpen(false);
   };
 
@@ -55,12 +53,24 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
     return cartItems.find((item) => item.id === id)?.quantity || 0;
   };
 
-  const increaseCartQuantity = (id: number) => {
+  const increaseCartQuantity = (
+    id: number,
+    name?: string,
+    image?: string,
+    price?: number
+  ) => {
     setCartItems((currItems) => {
-      if (currItems.find((item) => item.id === id) == null) {
+      const existingItem = currItems.find((item) => item.id === id);
+      if (existingItem == null) {
         return [
           ...currItems,
-          { id, quantity: 1, name: "", image: "", price: 0 },
+          {
+            id,
+            quantity: 1,
+            name: name || "Unknown Product",
+            image: image || "",
+            price: price || 0,
+          },
         ];
       } else {
         return currItems.map((item) => {

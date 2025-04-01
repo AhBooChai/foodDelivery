@@ -16,7 +16,11 @@ const CartItem = ({ id, name, image, price, quantity }: CartItemProps) => {
 
   return (
     <div className="cart-item">
-      <img src={image} alt={name} className="cart-item__image" />
+      {image ? (
+        <img src={image} alt={name} className="cart-item__image" />
+      ) : (
+        <div className="cart-item__no-image">No Image</div>
+      )}
       <div className="cart-item__details">
         <h3 className="cart-item__name">{name}</h3>
         <p className="cart-item__price">{formatCurrency(price)} per unit</p>

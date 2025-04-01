@@ -4,9 +4,9 @@ import "./Cart.scss";
 
 const Cart = () => {
   const { isOpen, closeCart, cartItems } = useShoppingCart();
-
+  console.log(cartItems);
   return (
-    <div className={`cart ${isOpen ? "--open" : ""}`}>
+    <div className={`cart ${isOpen ? "cart--open" : ""}`}>
       <div className="cart__content">
         <div className="cart__header">
           <h2 className="cart__title">Cart</h2>
