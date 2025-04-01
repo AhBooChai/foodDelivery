@@ -1,11 +1,17 @@
 import { useProducts } from "../../context/ProductsContext";
 import { useShoppingCart } from "../../context/ShoppingCartContext";
 import { formatCurrency } from "../../utilities/formatCurrency";
+import CartItem from "../CartItem";
 import "./Cart.scss";
 
 const Cart = () => {
   const { products } = useProducts();
   const { isOpen, closeCart, cartItems } = useShoppingCart();
+
+  const totalPrice = cartItems.reduce((total, cartItem) => {
+    const product = products.find((p) => p.id === cartItem.id);
+    return total + (product ? product.price * cartItem.quantity : 0);
+  }, 0);
 
   return (
     <div className={`cart ${isOpen ? "cart--open" : ""}`}>
@@ -13,7 +19,7 @@ const Cart = () => {
         <div className="cart__header">
           <h2 className="cart__title">Cart</h2>
           <button className="cart__button" onClick={closeCart}>
-            X
+            ✖
           </button>
         </div>
         <div className="cart__items">
@@ -26,18 +32,24 @@ const Cart = () => {
               if (!product) return null; // If product is not found, don't render.
 
               return (
-                <div key={cartItem.id} className="cart-item">
-                  <img src={product.img} alt={product.name} width={50} />
-                  <div>
-                    <h3>{product.name}</h3>
-                    <p>Price: {formatCurrency(product.price)}</p>
-                    <p>Quantity: {cartItem.quantity}</p>
-                  </div>
-                </div>
+                <CartItem
+                  key={cartItem.id}
+                  id={cartItem.id}
+                  name={product.name}
+                  image={product.img}
+                  price={product.price}
+                  quantity={cartItem.quantity}
+                />
               );
             })
           )}
         </div>
+
+        {cartItems.length > 0 && (
+          <div className="cart__total">
+            <h3>Total: {formatCurrency(totalPrice)}</h3>
+          </div>
+        )}
       </div>
     </div>
   );

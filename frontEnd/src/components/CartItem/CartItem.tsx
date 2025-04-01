@@ -22,8 +22,11 @@ const CartItem = ({ id, name, image, price, quantity }: CartItemProps) => {
         <div className="cart-item__no-image">No Image</div>
       )}
       <div className="cart-item__details">
-        <h3 className="cart-item__name">{name}</h3>
+        <p className="cart-item__name">{name}</p>
         <p className="cart-item__price">{formatCurrency(price)} per unit</p>
+        <p className="cart-item__total">
+          <strong>Total:</strong> {formatCurrency(price * quantity)}
+        </p>
         <div className="cart-item__controls">
           <button
             onClick={() => decreaseCartQuantity(id)}
