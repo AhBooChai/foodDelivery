@@ -21,13 +21,14 @@ interface Product {
 
 interface ProductContext {
   products: Product[];
-  filteredProducts: Product[]; // ✅ Added
-  search: string; // ✅ Added
+  filteredProducts: Product[];
+  search: string;
   loading: boolean;
   showFood: () => void;
   showDrinks: () => void;
   showAll: () => void;
   handleSearch: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  addProduct: (newProduct: Product) => void;
 }
 
 const ProductContext = createContext({} as ProductContext);
@@ -86,6 +87,11 @@ export function ProductProvider({ children }: ProductProvider) {
     setFilteredProducts(filtered);
   };
 
+  const addProduct = (newProduct: Product) => {
+    setProducts((prev) => [...prev, newProduct]);
+    setFilteredProducts((prev) => [...prev, newProduct]);
+  };
+
   return (
     <ProductContext.Provider
       value={{
@@ -97,6 +103,7 @@ export function ProductProvider({ children }: ProductProvider) {
         showDrinks,
         showAll,
         handleSearch,
+        addProduct,
       }}
     >
       {children}
